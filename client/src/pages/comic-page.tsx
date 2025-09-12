@@ -53,6 +53,37 @@ export default function ComicPage() {
         </div>
       </header>
 
+      {/* Hero Section */}
+      {(!account || (account && !balanceLoading && !unlocked)) && (
+        <section className="py-16 px-6 bg-gradient-to-b from-card to-background border-b border-border">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <div className="w-24 h-24 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+              <span className="text-primary-foreground font-bold text-3xl">M</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight" data-testid="text-hero-title">
+              Little Man Comic
+            </h1>
+            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto" data-testid="text-hero-subtitle">
+              Experience the vintage 1930s cartoon adventures of Little Man in this exclusive token-gated flipbook comic
+            </p>
+            <div className="flex flex-col md:flex-row gap-4 justify-center items-center text-sm text-muted-foreground">
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
+                Interactive Flipbook
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                Powered by Sui Blockchain
+              </span>
+              <span className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
+                Token Gated with $MNM
+              </span>
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Main Content */}
       <main className="flex-1 flex items-center justify-center p-6">
         {!account && (
@@ -62,10 +93,10 @@ export default function ComicPage() {
                 <span className="text-2xl">🔗</span>
               </div>
               <h2 className="text-xl font-semibold" data-testid="text-connect-prompt">
-                Unlock the Little Man Comic with $MNM
+                Connect Your Wallet
               </h2>
               <p className="text-muted-foreground">
-                Connect your Sui wallet to continue and unlock exclusive comic content.
+                Connect your Sui wallet to check your $MNM balance and unlock the comic.
               </p>
             </CardContent>
           </Card>
