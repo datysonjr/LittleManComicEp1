@@ -109,3 +109,30 @@
     @apply font-sans antialiased bg-background text-foreground;
   }
 }
+
+/* Flipbook Styles */
+.comic-book-container {
+  @apply flex justify-center items-center;
+}
+
+.comic-book {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+
+.page img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
