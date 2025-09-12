@@ -53,68 +53,6 @@ export default function ComicPage() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      {(!account || (account && !balanceLoading && !unlocked)) && (
-        <section className="py-20 px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              {/* Left side - Text content */}
-              <div className="space-y-8">
-                <h1 className="text-6xl lg:text-7xl font-bold tracking-tight leading-none" data-testid="text-hero-title">
-                  MEET THE<br/>
-                  LITTLE MAN
-                </h1>
-                <p className="text-xl text-muted-foreground max-w-md" data-testid="text-hero-subtitle">
-                  The vintage superhero bringing classic cartoon charm to the SUI blockchain
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <Button asChild size="lg" data-testid="button-get-mnm-hero">
-                    <a
-                      href="https://blast.fun/token/0xefde5ddb743bd93e68a75e410e985980457b5e8837c7f4afa36ecc12bb91022b::mnm::MNM"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="bg-primary text-primary-foreground hover:bg-primary/90 border border-primary"
-                    >
-                      💰 Get $MNM
-                    </a>
-                  </Button>
-                  <Button variant="outline" size="lg" data-testid="button-join-community">
-                    🤝 Join Community
-                  </Button>
-                  <Button variant="outline" size="lg" data-testid="button-follow-us">
-                    👥 Follow Us
-                  </Button>
-                </div>
-                <div className="flex gap-8 text-sm">
-                  <div className="text-center">
-                    <div className="font-bold text-lg">$MNM</div>
-                    <div className="text-muted-foreground">TICKER</div>
-                  </div>
-                  <div className="text-center">
-                    <div className="font-bold text-lg">SUI</div>
-                    <div className="text-muted-foreground">BLOCKCHAIN</div>
-                  </div>
-                </div>
-              </div>
-              
-              {/* Right side - Vintage character illustration placeholder */}
-              <div className="flex justify-center lg:justify-end">
-                <div className="w-80 h-80 bg-card border-2 border-border rounded-lg flex items-center justify-center">
-                  <div className="text-center space-y-4">
-                    <div className="w-24 h-24 bg-primary rounded-full flex items-center justify-center mx-auto">
-                      <span className="text-primary-foreground font-bold text-3xl">M</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground px-4">
-                      Vintage Little Man<br/>Character Illustration
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* Main Content */}
       <main className="flex-1 flex items-center justify-center p-6">
         {!account && (
@@ -124,10 +62,10 @@ export default function ComicPage() {
                 <span className="text-2xl">🔗</span>
               </div>
               <h2 className="text-xl font-semibold" data-testid="text-connect-prompt">
-                Connect Your Wallet
+                Unlock the Little Man Comic with $MNM
               </h2>
               <p className="text-muted-foreground">
-                Connect your Sui wallet to check your $MNM balance and unlock the comic.
+                Connect your Sui wallet to continue and unlock exclusive comic content.
               </p>
             </CardContent>
           </Card>
@@ -203,18 +141,6 @@ export default function ComicPage() {
                   flippingTime={600}
                   usePortrait={true}
                   startZIndex={0}
-                  autoSize={false}
-                  maxShadowOpacity={0.5}
-                  showCover={false}
-                  mobileScrollSupport={true}
-                  clickEventForward={true}
-                  useMouseEvents={true}
-                  swipeDistance={30}
-                  showPageCorners={true}
-                  disableFlipByClick={false}
-                  className=""
-                  style={{}}
-                  startPage={0}
                   data-testid="flipbook-comic"
                 >
                   {COMIC_PAGES.map((page, index) => (
