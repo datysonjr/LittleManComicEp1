@@ -1,0 +1,141 @@
+got you. here’s a Replit-facing, non-technical, step-by-step outline you can paste right into your README or project brief.
+
+Project goal (plain English)
+
+We’re launching a simple web app where fans connect a Sui wallet and, if they hold enough $MNM (Little Man Token), a flipbook comic unlocks. If they don’t hold enough, they’ll see a friendly message with a button to go get $MNM.
+
+$MNM coin type:
+0xefde5ddb743bd93e68a75e410e985980457b5e8837c7f4afa36ecc12bb91022b::mnm::MNM
+Buy/learn page:
+https://blast.fun/token/0xefde5ddb743bd93e68a75e410e985980457b5e8837c7f4afa36ecc12bb91022b::mnm::MNM
+
+⸻
+
+What we’re building (outcome)
+	•	A single web page with:
+	1.	a Connect Wallet button,
+	2.	a gate check for $MNM balance, and
+	3.	a flipbook you can flip through like a real comic once the gate is satisfied.
+
+⸻
+
+Step 0 — Replit project setup (no code details)
+
+Create a new Replit project (React / Vite is perfect). We’ll keep everything simple: a single page app, a folder of comic page images, and two environment variables.
+
+⸻
+
+Step 1 — Add the comic pages
+
+Make a folder called /public/pages. Drop your comic images there and name them in order:
+	•	01.jpg, 02.jpg, 03.jpg, 04.jpg, …
+Aim for ~1600–2000px tall JPGs so the pages look crisp but load fast.
+
+Tip: Put your best/most visual hook on Page 1 and a strong “to be continued” near the end to encourage collecting/holding.
+
+⸻
+
+Step 2 — Add two Replit Secrets (env variables)
+
+In Replit → Secrets add:
+	•	VITE_MNM_COIN_TYPE =
+0xefde5ddb743bd93e68a75e410e985980457b5e8837c7f4afa36ecc12bb91022b::mnm::MNM
+	•	VITE_MNM_MIN =
+100000000
+(This is an example threshold. With 9 decimals, this equals 0.1 MNM. You can raise/lower it anytime.)
+
+These two values control which token unlocks the comic and how much is required.
+
+⸻
+
+Step 3 — Wallet connect (what the button does)
+
+The page includes a Connect Wallet button from Sui’s dApp Kit. When the user clicks it, they pick a wallet (e.g., Sui Wallet). Once connected, the app knows their address—nothing else fancy needed.
+
+⸻
+
+Step 4 — The gate logic (plain English)
+
+After a wallet connects, the app quietly asks the Sui network:
+“How much $MNM does this address hold?”
+	•	If the balance is greater than or equal to the amount in VITE_MNM_MIN, show the flipbook.
+	•	If it’s lower, show a friendly prompt with a link to the $MNM page on blast.fun so they can acquire more:
+	•	https://blast.fun/token/0xefde5ddb743bd93e68a75e410e985980457b5e8837c7f4afa36ecc12bb91022b::mnm::MNM
+
+You can change the minimum anytime by editing VITE_MNM_MIN (no code changes needed).
+
+⸻
+
+Step 5 — Flipbook experience
+
+The comic appears as a page-flip experience: users tap/click the page corner or swipe left/right to turn pages. We’ll preload the first page so it opens quick, then load the next pages as they flip to keep it smooth.
+
+Content ideas to include on pages:
+	•	A branded cover page with logo and “Episode 1”.
+	•	A credits page that shouts out artists and $MNM holders.
+	•	A CTA page at the end: “Collect $MNM to unlock future issues,” with the blast.fun link.
+
+⸻
+
+Step 6 — Test on testnet first (optional but recommended)
+
+Before mainnet, you can test on Sui testnet just to confirm wallet connect and the gating flow work. When you’re ready for real users, switch your app’s default network to mainnet (the coin type you added is already your real mainnet coin).
+
+⸻
+
+Step 7 — Mainnet go-live checklist
+	•	✅ Pages are inside /public/pages and named in order.
+	•	✅ VITE_MNM_COIN_TYPE is set to the exact coin type above.
+	•	✅ VITE_MNM_MIN is set to your preferred threshold.
+	•	✅ The “Not enough $MNM” message links to blast.fun (URL above).
+	•	✅ The Connect Wallet button works from a phone and desktop.
+
+Open the Replit preview link, connect your wallet, and confirm the comic unlocks when you hold enough $MNM.
+
+⸻
+
+Step 8 — Share the link
+
+Use your Replit web URL publicly. Add it to your socials, Link in Bio, and pin it in communities. The page is deliberately simple so it loads fast and looks clean on mobile.
+
+⸻
+
+Step 9 — Helpful copy you can paste in the UI
+
+Short header (hero area):
+“Unlock the Little Man Comic with $MNM”
+
+Gate message (when user has too little):
+“You need at least 0.10 $MNM to unlock this comic. Pick some up here:”
+blast.fun → $MNM (Little Man Token)
+(Use the exact link above.)
+
+Unlocked message (subtle):
+“Thanks for supporting Little Man! Enjoy the comic.”
+
+Footer line:
+“Episode 1 • Powered by Sui • $MNM”
+
+⸻
+
+Step 10 — Troubleshooting (plain language)
+	•	Wallet doesn’t connect: Try another Sui wallet or refresh. Mobile wallets often work best inside an in-app browser.
+	•	I hold $MNM but still locked: Close and reopen the page. Some wallets take a second to reflect the new balance; give it 30–60 seconds after a purchase/transfer.
+	•	Images feel heavy: Export pages as JPG around 70–80% quality and keep width under ~1400–1600px.
+
+⸻
+
+Step 11 — Nice-to-have add-ons (next sprint)
+	•	“Continue reading”: Remember the last page in local storage so returning users continue where they left off.
+	•	Owner tools: A hidden admin panel that only loads for your wallet, letting you airdrop small amounts of $MNM to superfans.
+	•	CDN: Host page images on a CDN (like Cloudflare R2 with image resizing) for even faster loads.
+
+⸻
+
+What to hand a dev (summary)
+	1.	The coin type and blast.fun URL (already included above).
+	2.	Your threshold (e.g., 0.10 $MNM).
+	3.	Your comic pages exported to /public/pages.
+	4.	This document pasted into the README.
+
+That’s it—you’ll have a clean token-gated flipbook that feels premium but is easy to maintain.
