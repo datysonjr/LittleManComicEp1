@@ -132,6 +132,15 @@ export default function ComicPage() {
                 <HTMLFlipBook 
                   width={400} 
                   height={600}
+                  size="stretch"
+                  minWidth={300}
+                  maxWidth={500}
+                  minHeight={450}
+                  maxHeight={750}
+                  drawShadow={true}
+                  flippingTime={600}
+                  usePortrait={true}
+                  startZIndex={0}
                   data-testid="flipbook-comic"
                 >
                   {COMIC_PAGES.map((page, index) => (
@@ -142,32 +151,11 @@ export default function ComicPage() {
                         className="w-full h-full object-contain"
                         loading={index === 0 ? "eager" : "lazy"}
                         data-testid={`comic-page-${index + 1}`}
-                        onError={(e) => console.error(`Failed to load image: ${page}`, e)}
-                        onLoad={() => console.log(`Successfully loaded image: ${page}`)}
                       />
                     </div>
                   ))}
                 </HTMLFlipBook>
               </div>
-            </div>
-            
-            {/* Debug: Show images directly for testing */}
-            <div className="mt-8 text-center">
-              <details className="text-sm text-muted-foreground">
-                <summary className="cursor-pointer">Debug: View comic images directly</summary>
-                <div className="mt-4 grid grid-cols-2 gap-4 max-w-2xl mx-auto">
-                  {COMIC_PAGES.map((page, index) => (
-                    <div key={index} className="border border-border rounded p-2">
-                      <img
-                        src={page}
-                        alt={`Debug: Comic page ${index + 1}`}
-                        className="w-full h-32 object-contain"
-                      />
-                      <p className="text-xs mt-1">Page {index + 1}: {page}</p>
-                    </div>
-                  ))}
-                </div>
-              </details>
             </div>
 
             {/* Footer info */}
