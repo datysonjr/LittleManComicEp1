@@ -55,30 +55,61 @@ export default function ComicPage() {
 
       {/* Hero Section */}
       {(!account || (account && !balanceLoading && !unlocked)) && (
-        <section className="py-16 px-6 bg-gradient-to-b from-card to-background border-b border-border">
-          <div className="max-w-4xl mx-auto text-center space-y-6">
-            <div className="w-24 h-24 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-              <span className="text-primary-foreground font-bold text-3xl">M</span>
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight" data-testid="text-hero-title">
-              Little Man Comic
-            </h1>
-            <p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto" data-testid="text-hero-subtitle">
-              Experience the vintage 1930s cartoon adventures of Little Man in this exclusive token-gated flipbook comic
-            </p>
-            <div className="flex flex-col md:flex-row gap-4 justify-center items-center text-sm text-muted-foreground">
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                Interactive Flipbook
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
-                Powered by Sui Blockchain
-              </span>
-              <span className="flex items-center gap-2">
-                <span className="w-2 h-2 bg-yellow-500 rounded-full"></span>
-                Token Gated with $MNM
-              </span>
+        <section className="py-20 px-6">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+              {/* Left side - Text content */}
+              <div className="space-y-8">
+                <h1 className="text-6xl lg:text-7xl font-bold tracking-tight leading-none" data-testid="text-hero-title">
+                  MEET THE<br/>
+                  LITTLE MAN
+                </h1>
+                <p className="text-xl text-muted-foreground max-w-md" data-testid="text-hero-subtitle">
+                  The vintage superhero bringing classic cartoon charm to the SUI blockchain
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Button asChild size="lg" data-testid="button-get-mnm-hero">
+                    <a
+                      href="https://blast.fun/token/0xefde5ddb743bd93e68a75e410e985980457b5e8837c7f4afa36ecc12bb91022b::mnm::MNM"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-primary text-primary-foreground hover:bg-primary/90 border border-primary"
+                    >
+                      💰 Get $MNM
+                    </a>
+                  </Button>
+                  <Button variant="outline" size="lg" data-testid="button-join-community">
+                    🤝 Join Community
+                  </Button>
+                  <Button variant="outline" size="lg" data-testid="button-follow-us">
+                    👥 Follow Us
+                  </Button>
+                </div>
+                <div className="flex gap-8 text-sm">
+                  <div className="text-center">
+                    <div className="font-bold text-lg">$MNM</div>
+                    <div className="text-muted-foreground">TICKER</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="font-bold text-lg">SUI</div>
+                    <div className="text-muted-foreground">BLOCKCHAIN</div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Right side - Vintage character illustration placeholder */}
+              <div className="flex justify-center lg:justify-end">
+                <div className="w-80 h-80 bg-card border-2 border-border rounded-lg flex items-center justify-center">
+                  <div className="text-center space-y-4">
+                    <div className="w-24 h-24 bg-primary rounded-full flex items-center justify-center mx-auto">
+                      <span className="text-primary-foreground font-bold text-3xl">M</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground px-4">
+                      Vintage Little Man<br/>Character Illustration
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -172,6 +203,18 @@ export default function ComicPage() {
                   flippingTime={600}
                   usePortrait={true}
                   startZIndex={0}
+                  autoSize={false}
+                  maxShadowOpacity={0.5}
+                  showCover={false}
+                  mobileScrollSupport={true}
+                  clickEventForward={true}
+                  useMouseEvents={true}
+                  swipeDistance={30}
+                  showPageCorners={true}
+                  disableFlipByClick={false}
+                  className=""
+                  style={{}}
+                  startPage={0}
                   data-testid="flipbook-comic"
                 >
                   {COMIC_PAGES.map((page, index) => (
