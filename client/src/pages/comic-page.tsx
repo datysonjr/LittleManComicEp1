@@ -133,13 +133,13 @@ export default function ComicPage() {
             <div className="flex justify-center">
               <div className="comic-book-container">
                 <HTMLFlipBook 
-                  width={400} 
-                  height={600}
+                  width={600} 
+                  height={800}
                   size="stretch"
-                  minWidth={300}
-                  maxWidth={500}
-                  minHeight={450}
-                  maxHeight={750}
+                  minWidth={500}
+                  maxWidth={700}
+                  minHeight={700}
+                  maxHeight={900}
                   drawShadow={true}
                   flippingTime={600}
                   usePortrait={true}
@@ -163,7 +163,7 @@ export default function ComicPage() {
                       <img
                         src={page}
                         alt={`Comic page ${index + 1}`}
-                        className="w-full h-full object-contain"
+                        className="w-full h-full object-cover"
                         loading={index === 0 ? "eager" : "lazy"}
                         data-testid={`comic-page-${index + 1}`}
                       />
