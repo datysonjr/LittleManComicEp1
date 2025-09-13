@@ -1,0 +1,4 @@
+# Ignore server directory to prevent function detection
+server/**
+drizzle.config.ts
+*.log
