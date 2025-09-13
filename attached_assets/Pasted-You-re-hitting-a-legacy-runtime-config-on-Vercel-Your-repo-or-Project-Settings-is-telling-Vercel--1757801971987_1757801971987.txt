@@ -1,0 +1,108 @@
+You’re hitting a legacy runtime config on Vercel. Your repo (or Project Settings) is telling Vercel to use now-php without a pinned version, so the build aborts:
+
+Error: Function Runtimes must have a valid version, for example now-php@1.0.0.
+
+What to do (fastest path)
+
+If this is just a static site (HTML/CSS/JS or Vite build) and you don’t need any serverless functions:
+	1.	Remove legacy config files from the repo root if they exist:
+	•	vercel.json or now.json
+	2.	Make sure there’s no api/ folder (Vercel treats /api as serverless functions).
+	3.	Commit → push to GitHub → Redeploy on Vercel.
+
+That alone usually fixes it.
+
+⸻
+
+If you do need functions (Node or PHP)
+
+A) Node functions
+	•	Ensure you’re not referencing now-php anywhere.
+	•	Optional (pin Node runtime per-route):
+
+{
+  "functions": {
+    "api/**/*.ts": { "runtime": "nodejs20.x" },
+    "api/**/*.js": { "runtime": "nodejs20.x" }
+  }
+}
+
+
+	•	Keep any build/output settings you need (see template below).
+
+B) PHP functions
+	•	Replace the legacy now-php with the modern, version-pinned runtime:
+
+{
+  "functions": {
+    "api/**/*.php": { "runtime": "vercel-php@0.7.0" }
+  }
+}
+
+Any recent 0.x is fine as long as it’s pinned. The key is include the version.
+
+Commit → push → Redeploy.
+
+⸻
+
+Clean vercel.json templates
+
+Static (no functions)
+
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist"
+}
+
+(If you’re not using a build step, omit buildCommand and set "outputDirectory": ".".)
+
+With Node functions + Vite
+
+{
+  "version": 2,
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "functions": {
+    "api/**/*.ts": { "runtime": "nodejs20.x" },
+    "api/**/*.js": { "runtime": "nodejs20.x" }
+  }
+}
+
+With PHP functions
+
+{
+  "version": 2,
+  "functions": {
+    "api/**/*.php": { "runtime": "vercel-php@0.7.0" }
+  }
+}
+
+
+⸻
+
+Also check Vercel Project Settings (one-time)
+	•	Settings → Functions → Default Runtime
+If you see a legacy runtime (e.g., now-php) or anything blank/odd, set it to Node.js 20.x (unless you truly need PHP and are pinning it in vercel.json).
+
+⸻
+
+Quick Replit checklist for this repo
+	1.	In Replit file tree, search for:
+	•	vercel.json, now.json, any "now-php" or "vercel-php" strings.
+	2.	If the project is static: delete the config and any /api folder.
+	3.	If using Vite: ensure package.json has:
+
+"scripts": { "build": "vite build" }
+
+
+	4.	Commit in Replit:
+
+git add -A
+git commit -m "fix: remove legacy now-php / pin correct runtime"
+git push origin main
+
+
+	5.	Redeploy on Vercel.
+
+If you paste your current vercel.json (or confirm whether you have an /api folder), I’ll rewrite it precisely for your setup.
