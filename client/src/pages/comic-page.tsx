@@ -3,6 +3,11 @@ import HTMLFlipBook from "react-pageflip";
 import { useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import comicCover from "@assets/little-man-comic-cover_1757786944916.png";
+import comicPage1 from "@assets/little-man-comic-page-1_1757786947759.png";
+import comicPage2 from "@assets/little-man-comic-page-2_1757786950445.png";
+import comicPage3 from "@assets/little-man-comic-page-3_1757786953699.png";
+import comicBackCover from "@assets/little-man-comic-back cover_1757786956772.png";
 
 // Environment variables for $MNM configuration
 const COIN_TYPE = import.meta.env.VITE_MNM_COIN_TYPE as string || "0xefde5ddb743bd93e68a75e410e985980457b5e8837c7f4afa36ecc12bb91022b::mnm::MNM";
@@ -10,13 +15,11 @@ const GATE_MIN = Number(import.meta.env.VITE_MNM_MIN ?? "100000000"); // 0.1 MNM
 
 // Comic pages array
 const COMIC_PAGES = [
-  "/pages/01.jpg",
-  "/pages/02.jpg",
-  "/pages/03.jpg",
-  "/pages/04.jpg",
-  "/pages/05.jpg",
-  "/pages/06.jpg",
-  "/pages/07.jpg",
+  comicCover,
+  comicPage1,
+  comicPage2,
+  comicPage3,
+  comicBackCover,
 ];
 
 export default function ComicPage() {
@@ -141,6 +144,18 @@ export default function ComicPage() {
                   flippingTime={600}
                   usePortrait={true}
                   startZIndex={0}
+                  startPage={0}
+                  autoSize={false}
+                  maxShadowOpacity={1}
+                  showCover={false}
+                  mobileScrollSupport={true}
+                  clickEventForward={true}
+                  useMouseEvents={true}
+                  swipeDistance={30}
+                  showPageCorners={true}
+                  disableFlipByClick={false}
+                  className="comic-book"
+                  style={{}}
                   data-testid="flipbook-comic"
                 >
                   {COMIC_PAGES.map((page, index) => (
