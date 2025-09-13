@@ -3,11 +3,12 @@ import HTMLFlipBook from "react-pageflip";
 import { useMemo } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import comicCover from "@assets/little-man-comic-cover_1757786944916.png";
-import comicPage1 from "@assets/little-man-comic-page-1_1757786947759.png";
-import comicPage2 from "@assets/little-man-comic-page-2_1757786950445.png";
-import comicPage3 from "@assets/little-man-comic-page-3_1757786953699.png";
-import comicBackCover from "@assets/little-man-comic-back cover_1757786956772.png";
+// Import comic images from public directory for Vercel deployment
+const comicCover = "/little-man-comic-cover_1757786944916.png";
+const comicPage1 = "/little-man-comic-page-1_1757786947759.png";
+const comicPage2 = "/little-man-comic-page-2_1757786950445.png";
+const comicPage3 = "/little-man-comic-page-3_1757786953699.png";
+const comicBackCover = "/little-man-comic-back cover_1757786956772.png";
 
 // Environment variables for $MNM configuration
 const COIN_TYPE = import.meta.env.VITE_MNM_COIN_TYPE as string || "0xefde5ddb743bd93e68a75e410e985980457b5e8837c7f4afa36ecc12bb91022b::mnm::MNM";
